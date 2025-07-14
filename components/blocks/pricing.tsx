@@ -83,7 +83,7 @@ export function Pricing({
         <label className="relative inline-flex items-center cursor-pointer">
           <Label>
             <Switch
-              ref={switchRef as any}
+              ref={switchRef}
               checked={!isMonthly}
               onCheckedChange={handleToggle}
               className="relative"
@@ -96,7 +96,7 @@ export function Pricing({
       </div>
 
       <div className="w-full flex justify-center">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-5xl mx-auto px-4 md:px-0">
           {plans.map((plan, index) => (
             <motion.div
               key={index}
@@ -156,7 +156,6 @@ export function Pricing({
                         minimumFractionDigits: 0,
                         maximumFractionDigits: 0,
                       }}
-                      formatter={(value) => `$${value}`}
                       transformTiming={{
                         duration: 500,
                         easing: "ease-out",

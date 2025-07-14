@@ -13,7 +13,7 @@ const BentoGrid = ({
   return (
     <div
       className={cn(
-        "grid w-full auto-rows-[22rem] grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4",
+        "grid w-full auto-rows-[36rem] grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4",
         className,
       )}
     >
@@ -34,7 +34,7 @@ const BentoCard = ({
   name: string;
   className: string;
   background: ReactNode;
-  Icon: any;
+  Icon: React.ComponentType<{ className?: string }>;
   description: string;
   href: string;
   cta: string;
@@ -43,8 +43,10 @@ const BentoCard = ({
     key={name}
     className={cn(
       "group relative col-span-1 flex flex-col justify-between overflow-hidden rounded-xl",
-      // CRATE dark theme
-      "bg-gray-900/20 backdrop-blur-sm border border-gray-800/30 hover:border-gray-700/50 transition-all duration-300 hover:bg-gray-900/30",
+      // CRATE dark theme with black/gray shiny corner borders
+      "bg-black/80 backdrop-blur-sm border border-gray-700/50 transition-all duration-300 hover:bg-black/90",
+      "hover:border-gray-400/80 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)]",
+      "before:absolute before:inset-0 before:rounded-xl before:p-[1px] before:bg-gradient-to-br before:from-gray-600/40 before:via-gray-700/20 before:to-transparent before:opacity-70 hover:before:opacity-100 before:transition-opacity before:duration-300 before:-z-10",
       className,
     )}
   >
@@ -73,4 +75,4 @@ const BentoCard = ({
   </div>
 );
 
-export { BentoCard, BentoGrid }; 
+export { BentoCard, BentoGrid };

@@ -2,8 +2,9 @@
 import React from 'react';
 import type { ComponentProps, ReactNode } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
-import { FacebookIcon, FrameIcon, InstagramIcon, LinkedinIcon, YoutubeIcon } from 'lucide-react';
+import { FacebookIcon, InstagramIcon, LinkedinIcon, YoutubeIcon } from 'lucide-react';
 import { DottedText } from '@/components/ui/dotted-text';
+import Image from 'next/image';
 
 interface FooterLink {
 	title: string;
@@ -22,26 +23,15 @@ const footerLinks: FooterSection[] = [
 		links: [
 			{ title: 'Features', href: '#features' },
 			{ title: 'Pricing', href: '#pricing' },
-			{ title: 'Testimonials', href: '#testimonials' },
-			{ title: 'Integration', href: '/' },
+			{ title: 'Integrations', href: '#integrations' },
 		],
 	},
 	{
 		label: 'Company',
 		links: [
-			{ title: 'FAQs', href: '/faqs' },
-			{ title: 'About Us', href: '/about' },
+			{ title: 'FAQs', href: '#faq' },
 			{ title: 'Privacy Policy', href: '/privacy' },
 			{ title: 'Terms of Services', href: '/terms' },
-		],
-	},
-	{
-		label: 'Resources',
-		links: [
-			{ title: 'Blog', href: '/blog' },
-			{ title: 'Changelog', href: '/changelog' },
-			{ title: 'Brand', href: '/brand' },
-			{ title: 'Help', href: '/help' },
 		],
 	},
 	{
@@ -71,18 +61,26 @@ export function Footer() {
 			<div className="container mx-auto px-4 sm:px-6 relative z-10">
 				<div className="grid w-full gap-6 sm:gap-8 lg:grid-cols-3 lg:gap-8">
 					<AnimatedContainer className="space-y-4 text-center lg:text-left">
-						<FrameIcon className="size-8 mx-auto lg:mx-0" />
-						<p className="text-muted-foreground text-sm">
+						<div className="flex justify-center lg:justify-start">
+							<Image 
+								src="/crate logos/favicon-128x128.png" 
+								alt="CRATE Logo" 
+								width={40} 
+								height={40} 
+								className="object-contain w-10 h-10 sm:w-12 sm:h-12"
+							/>
+						</div>
+						<p className="text-muted-foreground text-sm lg:text-base">
 							© {new Date().getFullYear()} Crate. All rights reserved.
 						</p>
 					</AnimatedContainer>
 
-					<div className="grid grid-cols-2 gap-6 sm:gap-8 lg:grid-cols-4 lg:col-span-2">
+					<div className="grid grid-cols-3 gap-4 sm:gap-8 lg:grid-cols-4 lg:col-span-2">
 						{footerLinks.map((section, index) => (
 							<AnimatedContainer key={section.label} delay={0.1 + index * 0.1}>
 								<div className="text-center sm:text-left">
-									<h3 className="text-xs font-medium mb-3 sm:mb-4">{section.label}</h3>
-									<ul className="text-muted-foreground space-y-2 text-sm">
+									<h3 className="text-xs lg:text-sm font-medium mb-3 sm:mb-4">{section.label}</h3>
+									<ul className="text-muted-foreground space-y-2 text-sm lg:text-base">
 										{section.links.map((link) => (
 											<li key={link.title}>
 												<a

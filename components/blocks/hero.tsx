@@ -1,18 +1,8 @@
 "use client";
 
-import React, { useState,useMemo, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
+import React, { useMemo, useRef, useCallback } from "react";
 import { cn } from "@/lib/utils";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { ArrowRightIcon } from "lucide-react";
-import { Mockup, MockupFrame } from "@/components/ui/mockup";
-import { Glow } from "@/components/ui/glow";
-import { Marquee } from "@/components/ui/marquee";
-import Image from "next/image";
-import { useTheme } from "next-themes";
 
 import * as THREE from "three";
 import { Navbar } from "@/components/ui/navbar";
@@ -275,33 +265,28 @@ const DotMatrix: React.FC<DotMatrixProps> = ({
 const ShaderMaterial = ({
   source,
   uniforms,
-  maxFps = 60,
 }: {
   source: string;
   hovered?: boolean;
-  maxFps?: number;
   uniforms: Uniforms;
 }) => {
   const { size } = useThree();
   const ref = useRef<THREE.Mesh>(null);
-  let lastFrameTime = 0;
 
   useFrame(({ clock }) => {
     if (!ref.current) return;
     const timestamp = clock.getElapsedTime();
 
-    lastFrameTime = timestamp;
-
-    const material: any = ref.current.material;
+    const material = ref.current.material as THREE.ShaderMaterial;
     const timeLocation = material.uniforms.u_time;
     timeLocation.value = timestamp;
   });
 
-  const getUniforms = () => {
-    const preparedUniforms: any = {};
+  const getUniforms = useCallback(() => {
+    const preparedUniforms: Record<string, { value: unknown; type?: string }> = {};
 
     for (const uniformName in uniforms) {
-      const uniform: any = uniforms[uniformName];
+      const uniform = uniforms[uniformName];
 
       switch (uniform.type) {
         case "uniform1f":
@@ -312,7 +297,7 @@ const ShaderMaterial = ({
           break;
         case "uniform3f":
           preparedUniforms[uniformName] = {
-            value: new THREE.Vector3().fromArray(uniform.value),
+            value: new THREE.Vector3().fromArray(uniform.value as number[]),
             type: "3f",
           };
           break;
@@ -321,7 +306,7 @@ const ShaderMaterial = ({
           break;
         case "uniform3fv":
           preparedUniforms[uniformName] = {
-            value: uniform.value.map((v: number[]) =>
+            value: (uniform.value as number[][]).map((v: number[]) =>
               new THREE.Vector3().fromArray(v)
             ),
             type: "3fv",
@@ -329,7 +314,7 @@ const ShaderMaterial = ({
           break;
         case "uniform2f":
           preparedUniforms[uniformName] = {
-            value: new THREE.Vector2().fromArray(uniform.value),
+            value: new THREE.Vector2().fromArray(uniform.value as number[]),
             type: "2f",
           };
           break;
@@ -344,7 +329,7 @@ const ShaderMaterial = ({
       value: new THREE.Vector2(size.width * 2, size.height * 2),
     }; // Initialize u_resolution
     return preparedUniforms;
-  };
+  }, [uniforms, size.width, size.height]);
 
   // Shader material
   const material = useMemo(() => {
@@ -371,53 +356,27 @@ const ShaderMaterial = ({
     });
 
     return materialObject;
-  }, [size.width, size.height, source]);
+  }, [source, getUniforms]);
 
   return (
-    <mesh ref={ref as any}>
+    <mesh ref={ref}>
       <planeGeometry args={[2, 2]} />
       <primitive object={material} attach="material" />
     </mesh>
   );
 };
 
-const Shader: React.FC<ShaderProps> = ({ source, uniforms, maxFps = 60 }) => {
+const Shader: React.FC<ShaderProps> = ({ source, uniforms }) => {
   return (
     <Canvas className="absolute inset-0  h-full w-full">
-      <ShaderMaterial source={source} uniforms={uniforms} maxFps={maxFps} />
+      <ShaderMaterial source={source} uniforms={uniforms} />
     </Canvas>
   );
 };
 
 export const Hero = ({ 
-  className, 
-  badge, 
-  title = "Automate Your Growth",
-  description = "AI-powered operations for e-commerce. Integrate Shopify, Amazon, Meta Ads, and QuickBooks. Launch campaigns, sync data, and automate tasks—effortlessly.",
-  actions = [
-    { text: "Start Automating Now", href: "#", variant: "default" },
-    { text: "See CRATE in Action", href: "#", variant: "secondary" },
-  ], 
-  image 
+  className
 }: HeroProps = {}) => {
-  const { resolvedTheme } = useTheme();
-
-  // Company logos for the marquee
-  const companies = [
-    { name: "Watershed", logo: "https://framerusercontent.com/images/48ha9ZR9pDYrNkKYU7OudxIYPA.svg" },
-    { name: "ARC", logo: "https://framerusercontent.com/images/tMUnIUaiOHdTGqVLUfUeUMdMJNE.svg" },
-    { name: "Duolingo", logo: "https://framerusercontent.com/images/g6dpLTNGyMZJWUQcgHNRm6Jt8.svg" },
-    { name: "STATSIG", logo: "https://framerusercontent.com/images/Y6BJHidKgNLDArsDGcF4EI4Qwg.svg" },
-    { name: "Replit", logo: "https://framerusercontent.com/images/EvDhTIFIhK0LGo7m7YL2fQ15DE.svg" },
-  ];
-
-  // Default placeholder image
-  const placeholderImage = {
-    light: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80",
-    dark: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80",
-    alt: "Placeholder hero image"
-  };
-  const heroImage = image || placeholderImage;
 
   return (
     <div className={cn("flex w-full flex-col min-h-screen bg-black relative", className)}>
@@ -437,8 +396,8 @@ export const Hero = ({
       <div className="relative z-10 flex flex-col flex-1">
         <Navbar />
         {/* Overlay HeroSection content here, but keep hero image and glow below */}
-        <div className="flex flex-1 flex-col justify-center items-center px-4 py-16 sm:py-24 md:py-32 mt-16 sm:mt-0 w-full">
-          <div className="w-full max-w-7xl mx-auto flex flex-col items-center text-center gap-6">
+        <div className="flex flex-1 flex-col justify-center items-center px-2 sm:px-4 md:px-6 lg:px-8 py-8 sm:py-16 md:py-24 lg:py-32 mt-12 sm:mt-16 md:mt-0 w-full">
+          <div className="w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-4xl 2xl:max-w-7xl mx-auto flex flex-col items-center text-center gap-4 sm:gap-6 md:gap-8">
             <HeroSection />
           </div>
         </div>

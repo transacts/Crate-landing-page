@@ -5,6 +5,7 @@ import { Footer } from "@/components/blocks/footer-section";
 import { FaqSection } from "@/components/blocks/faq";
 import { Pricing } from "@/components/blocks/pricing";
 import { FeatureSection } from "@/components/blocks/feature-section";
+
 import AboutSection from "@/components/blocks/about-section";
 import { motion } from "framer-motion";
 
@@ -20,6 +21,7 @@ export default function Home() {
       >
         <Hero />
       </motion.section>
+
       <motion.section
         id="features"
         initial={{ opacity: 0, y: 40 }}

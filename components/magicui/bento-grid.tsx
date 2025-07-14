@@ -1,5 +1,5 @@
 import React from "react";
-import { BentoGrid, BentoCard } from "@/components/magicui/bento-grid";
+import { BentoGrid, BentoCard } from "@/components/ui/bento-grid";
 import { FaPlug, FaRobot, FaBullhorn, FaChartBar, FaUsers, FaSync } from "react-icons/fa";
 
 export function FeatureSection() {
@@ -64,4 +64,4 @@ export function FeatureSection() {
       </BentoGrid>
     </section>
   );
-} 
+}
