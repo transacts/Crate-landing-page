@@ -52,8 +52,8 @@ export default function About() {
         {/* Content Grid with 3D Model */}
         <div className="flex flex-col lg:grid lg:grid-cols-5 gap-8 sm:gap-12 lg:gap-16 items-center">
           {/* Text Content */}
-          <div className="w-full lg:col-span-2 text-center lg:text-left order-2 lg:order-1">
-            <p className="text-lg sm:text-xl lg:text-2xl font-medium leading-relaxed lg:leading-loose tracking-wide max-w-2xl mx-auto lg:mx-0">
+          <div className="w-full lg:col-span-2 text-center lg:text-left order-2 lg:order-1 lg:pl-8 xl:pl-12">
+            <p className="text-lg sm:text-xl lg:text-2xl font-medium leading-relaxed lg:leading-loose tracking-wide max-w-2xl mx-auto lg:mx-0 lg:ml-auto">
               We&apos;re <span className="font-bold">CRATE</span> — an AI-powered operational agent for e-commerce brands who actually want to scale efficiently. 
               We connect your Shopify, Amazon, Meta Ads, and QuickBooks accounts through one unified dashboard that automates campaigns, 
               generates financial reports, and deploys smart tasks. Founded in 2024, we eliminate repetitive busywork so commerce teams 
