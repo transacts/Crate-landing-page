@@ -1,103 +1,170 @@
-import Image from "next/image";
+"use client";
+
+import { Hero } from "@/components/blocks/hero";
+import { Footer } from "@/components/blocks/footer-section";
+import { FaqSection } from "@/components/blocks/faq";
+import { Pricing } from "@/components/blocks/pricing";
+import { FeatureSection } from "@/components/blocks/feature-section";
+import AboutSection from "@/components/blocks/about-section";
+import { motion } from "framer-motion";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen w-full">
+      <motion.section
+        id="home"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+      >
+        <Hero />
+      </motion.section>
+      <motion.section
+        id="features"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.7, ease: "easeOut", delay: 0.05 }}
+      >
+        <FeatureSection />
+      </motion.section>
+      <motion.section
+        id="about"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.7, ease: "easeOut", delay: 0.08 }}
+      >
+        <AboutSection />
+      </motion.section>
+      <motion.section
+        id="pricing"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
+      >
+        <div className="bg-black text-white w-full">
+          <Pricing
+            plans={[
+              {
+                name: "Starter",
+                price: "29",
+                yearlyPrice: "24",
+                period: "month",
+                features: [
+                  "Unlimited campaigns",
+                  "Shopify & Amazon integration",
+                  "Basic reporting",
+                  "Email support",
+                ],
+                description: "Perfect for new brands and small shops.",
+                buttonText: "Get Started",
+                href: "#",
+                isPopular: false,
+              },
+              {
+                name: "Growth",
+                price: "79",
+                yearlyPrice: "64",
+                period: "month",
+                features: [
+                  "Everything in Starter",
+                  "Meta Ads & QuickBooks integration",
+                  "Advanced reporting",
+                  "Priority support",
+                ],
+                description: "Best for scaling e-commerce businesses.",
+                buttonText: "Start Free Trial",
+                href: "#",
+                isPopular: true,
+              },
+              {
+                name: "Enterprise",
+                price: "199",
+                yearlyPrice: "159",
+                period: "month",
+                features: [
+                  "All integrations",
+                  "Custom automations",
+                  "Dedicated account manager",
+                  "24/7 support",
+                ],
+                description: "For high-volume brands and agencies.",
+                buttonText: "Contact Sales",
+                href: "#",
+                isPopular: false,
+              },
+            ]}
+            title="Pricing for Every Stage"
+            description="Simple, transparent pricing. No hidden fees."
+          />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </motion.section>
+      <motion.section
+        id="faq"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+      >
+        <FaqSection
+          title="Frequently Asked Questions"
+          description="Find answers to the most common questions about our platform."
+          items={[
+            {
+              question: "What is CRATE?",
+              answer: "CRATE is an AI-powered platform that helps e-commerce brands automate their daily operations. It connects your store, ad accounts, and finance tools so you can manage everything in one place—without the busywork.",
+            },
+            {
+              question: "Who is CRATE for?",
+              answer: "CRATE is built for e-commerce brands and teams who want to save time, reduce manual tasks, and grow faster by automating campaigns, reporting, and more.",
+            },
+            {
+              question: "What platforms does CRATE work with?",
+              answer: "You can connect CRATE to Shopify, Amazon, Meta Ads (Facebook/Instagram), and QuickBooks. More integrations are coming soon!",
+            },
+            {
+              question: "Do I need to know how to code to use CRATE?",
+              answer: "Nope! CRATE is designed for everyone. You don’t need any technical skills—just connect your accounts and start automating.",
+            },
+            {
+              question: "What can I automate with CRATE?",
+              answer: "You can automate ad campaigns, reporting, content creation, and routine tasks. CRATE’s AI helps you plan, launch, and manage everything from one dashboard.",
+            },
+            {
+              question: "Is my data safe with CRATE?",
+              answer: "Yes. CRATE uses secure authentication and best practices to keep your data safe. Only you and your team can access your information.",
+            },
+            {
+              question: "Can my whole team use CRATE?",
+              answer: "Absolutely! CRATE supports multi-user access, so you can invite your team, assign tasks, and collaborate securely.",
+            },
+            {
+              question: "How do I get started?",
+              answer: "Just sign up, connect your store and accounts, and you’ll be guided through the setup. You can start automating right away.",
+            },
+            {
+              question: "What if I need help?",
+              answer: "We’re here for you! Reach out to our support team anytime if you have questions or need assistance.",
+            },
+            {
+              question: "Can CRATE grow with my business?",
+              answer: "Yes! CRATE is built to scale, so whether you’re just starting out or running a high-traffic store, it will grow with you.",
+            },
+          ]}
+        />
+      </motion.section>
+      <motion.section
+        id="contact"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.7, ease: "easeOut", delay: 0.4 }}
+      >
+        <Footer />
+      </motion.section>
     </div>
   );
 }
