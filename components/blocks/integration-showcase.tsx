@@ -84,7 +84,7 @@ export function IntegrationShowcase() {
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900/20 to-black" />
       
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Header */}
         <motion.div 
           className="text-center mb-12 sm:mb-16"
@@ -112,7 +112,7 @@ export function IntegrationShowcase() {
           {/* Desktop Layout */}
           <div className="hidden lg:block relative" ref={containerRef}>
             {/* Integration Cards */}
-            <div className="flex flex-row justify-center items-start gap-8 max-w-4xl mx-auto">
+            <div className="flex flex-row justify-center items-start gap-8 max-w-4xl mx-auto px-4">
               {integrations.map((integration, index) => {
                 const refs = [shopifyRef, amazonRef, metaRef, quickbooksRef];
                 
@@ -143,7 +143,7 @@ export function IntegrationShowcase() {
           </div>
 
           {/* Mobile Layout */}
-          <div className="lg:hidden grid grid-cols-2 sm:grid-cols-4 gap-6">
+          <div className="lg:hidden grid grid-cols-2 sm:grid-cols-4 gap-6 px-4">
             {integrations.map((integration) => (
               <motion.div
                 key={integration.name}

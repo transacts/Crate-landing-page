@@ -222,34 +222,47 @@ export function FeatureSection() {
   return (
     <section 
       id="features" 
-      className="w-full flex flex-col items-center justify-center py-16 sm:py-20 lg:py-32 bg-black text-white relative"
+      className="w-full flex flex-col items-center justify-center py-16 sm:py-20 md:py-24 lg:py-28 xl:py-36 bg-black text-white relative"
     >
-      <div className="text-center mb-12 sm:mb-16 max-w-4xl mx-auto px-4 sm:px-6">
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 tracking-tight">
+      <div className="text-center mb-12 sm:mb-16 lg:mb-20 max-w-4xl mx-auto px-6 sm:px-8">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 lg:mb-6 tracking-tight">
           Features
         </h2>
-        <p className="text-gray-400 text-base sm:text-lg lg:text-xl leading-relaxed">
+        <p className="text-gray-400 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed">
           Everything you need to automate your e-commerce operations in one unified platform
         </p>
       </div>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 py-6 sm:py-8 lg:py-12 xl:py-16">
         {/* Mobile Layout - Stack all cards vertically */}
-        <div className="lg:hidden flex flex-col gap-6">
+        <div className="md:hidden flex flex-col gap-4 sm:gap-6">
           {crateFeatures.map((feature) => (
             <div key={feature.name} className="w-full">
               <BentoCard 
                 {...feature} 
-                className="h-80 sm:h-96 cursor-pointer hover:scale-[1.02] transition-transform duration-200" 
+                className="h-64 sm:h-80 cursor-pointer hover:scale-[1.02] transition-transform duration-200" 
                 onClick={() => handleFeatureClick(feature)}
               />
             </div>
           ))}
         </div>
         
-        {/* Desktop Layout - Original complex layout */}
-        <div className="hidden lg:flex flex-row gap-4 h-[36rem]">
-          {/* Left column - Integrations card (30% width) */}
-          <div className="w-[30%]">
+        {/* Tablet Layout - 2x3 Grid for better proportions */}
+        <div className="hidden md:grid lg:hidden grid-cols-2 gap-3 sm:gap-4 max-w-4xl mx-auto">
+          {crateFeatures.map((feature) => (
+            <div key={feature.name} className="w-full">
+              <BentoCard 
+                {...feature} 
+                className="h-48 sm:h-56 cursor-pointer hover:scale-[1.02] transition-transform duration-200" 
+                onClick={() => handleFeatureClick(feature)}
+              />
+            </div>
+          ))}
+        </div>
+        
+        {/* Desktop Layout - Reduced height for better proportions */}
+        <div className="hidden lg:flex flex-row gap-4 h-[28rem] xl:h-[32rem]">
+          {/* Left column - Integrations card (35% width for better balance) */}
+          <div className="w-[35%]">
             <BentoCard 
               {...crateFeatures[0]} 
               className="h-full cursor-pointer hover:scale-[1.02] transition-transform duration-200" 
@@ -257,8 +270,8 @@ export function FeatureSection() {
             />
           </div>
           
-          {/* Right column - 4 smaller cards (70% width) */}
-          <div className="w-[70%] flex flex-col gap-4">
+          {/* Right column - 4 smaller cards (65% width) */}
+          <div className="w-[65%] flex flex-col gap-4">
             {/* Top row - 2 cards */}
             <div className="flex gap-4 flex-1">
               <div className="flex-1">

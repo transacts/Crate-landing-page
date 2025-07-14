@@ -20,6 +20,7 @@ export const metadata: Metadata = {
   creator: "CRATE",
   publisher: "CRATE",
   robots: "index, follow",
+  viewport: "width=device-width, initial-scale=1, maximum-scale=5",
   openGraph: {
     title: "CRATE - Automate Your Store. Grow Faster.",
     description: "Connect Shopify, Amazon, Meta Ads, and QuickBooks. Run campaigns, create content, and manage it all with AI—no busywork.",

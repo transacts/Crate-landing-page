@@ -68,7 +68,7 @@ const FaqSection = React.forwardRef<HTMLElement, FaqSectionProps>(
               transition={{ duration: 0.5, delay: 0.3 }}
               className="max-w-md mx-auto mt-8 sm:mt-12 p-4 sm:p-6 rounded-lg text-center"
             >
-              <div className="inline-flex items-center justify-center p-1.5 rounded-full mb-4">
+              <div className="inline-flex items-center justify-center p-1.5 rounded-lg mb-4">
                 <Mail className="h-4 w-4 text-foreground" />
               </div>
               <p className="text-sm font-medium text-foreground mb-1">
@@ -132,7 +132,7 @@ const FaqItem = React.forwardRef<
         <h3
           className={cn(
             "text-base sm:text-lg font-medium transition-colors duration-300 text-left pr-3 sm:pr-4 leading-relaxed",
-            "text-foreground/70",
+            "text-foreground/70 break-words overflow-hidden",
             isOpen && "text-foreground",
             isHovered && !isOpen && "text-foreground/90"
           )}
@@ -146,7 +146,7 @@ const FaqItem = React.forwardRef<
           }}
           transition={{ duration: 0.2 }}
           className={cn(
-            "p-0.5 rounded-full flex-shrink-0",
+            "p-0.5 rounded-lg flex-shrink-0",
             "transition-colors duration-300",
             isOpen ? "text-foreground" : "text-muted-foreground",
             isHovered && "text-foreground/80"
@@ -175,7 +175,7 @@ const FaqItem = React.forwardRef<
                 initial={{ y: -10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: -10, opacity: 0 }}
-                className="text-sm sm:text-base text-muted-foreground leading-relaxed"
+                className="text-sm sm:text-base text-muted-foreground leading-relaxed break-words overflow-wrap-anywhere"
               >
                 {answer}
               </motion.p>

@@ -17,15 +17,15 @@ export function HeroSection() {
                         <div className="absolute inset-0 z-0 sm:hidden pointer-events-none" style={{background: 'linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 100%)'}} />
                         <div className="relative z-10 flex flex-col items-center gap-6 sm:gap-8 md:gap-10 px-4 sm:px-6 md:px-8 pt-16 sm:pt-20 md:pt-24 lg:pt-32 pb-12 sm:pb-16 md:pb-20 lg:pb-24 text-center max-w-4xl mx-auto">
                             {/* Headline */}
-                            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] text-white">
+                            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] text-white px-2">
                                 <span className="block">The Future of E-commerce is Here.</span>
                             </h1>
                             {/* Subheadline */}
-                            <p className="text-lg sm:text-xl md:text-2xl leading-relaxed max-w-3xl text-gray-300">
+                            <p className="text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed max-w-3xl text-gray-300 px-2">
                                 Automate operations with one intelligent platform.
                             </p>
                             {/* Buttons */}
-                            <div className="flex flex-row gap-6 justify-center items-center mt-4">
+                            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mt-4 w-full max-w-md sm:max-w-none">
                                 <InteractiveHoverButton
                                   text="Start Now"
                                   defaultActive={true}

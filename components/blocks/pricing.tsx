@@ -69,17 +69,17 @@ export function Pricing({
   };
 
   return (
-    <section className="w-full flex flex-col items-center justify-center py-20 bg-black text-white pt-32">
-      <div className="text-center space-y-4 mb-12 w-full">
-        <h2 className="text-4xl font-bold tracking-tight sm:text-5xl">
+    <section className="w-full flex flex-col items-center justify-center py-12 sm:py-20 bg-black text-white pt-20 sm:pt-32 px-4">
+      <div className="text-center space-y-4 mb-8 sm:mb-12 w-full max-w-4xl">
+        <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight">
           {title}
         </h2>
-        <p className="text-muted-foreground text-lg whitespace-pre-line">
+        <p className="text-muted-foreground text-sm sm:text-lg whitespace-pre-line px-2">
           {description}
         </p>
       </div>
 
-      <div className="flex justify-center mb-10 w-full">
+      <div className="flex justify-center mb-6 sm:mb-10 w-full">
         <label className="relative inline-flex items-center cursor-pointer">
           <Label>
             <Switch
@@ -90,13 +90,13 @@ export function Pricing({
             />
           </Label>
         </label>
-        <span className="ml-2 font-semibold">
+        <span className="ml-2 font-semibold text-sm sm:text-base">
           Annual billing <span className="text-primary">(Save 20%)</span>
         </span>
       </div>
 
       <div className="w-full flex justify-center">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-5xl mx-auto px-4 md:px-0">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 w-full max-w-5xl mx-auto px-4 sm:px-6 md:px-8">
           {plans.map((plan, index) => (
             <motion.div
               key={index}
@@ -121,7 +121,7 @@ export function Pricing({
                 opacity: { duration: 0.5 },
               }}
               className={cn(
-                `rounded-2xl border-[1px] p-6 bg-background text-center lg:flex lg:flex-col lg:justify-center relative`,
+                `rounded-2xl border-[1px] p-4 sm:p-6 bg-background text-center lg:flex lg:flex-col lg:justify-center relative`,
                 plan.isPopular ? "border-primary border-2" : "border-border",
                 "flex flex-col",
                 !plan.isPopular && "mt-5",
@@ -144,8 +144,8 @@ export function Pricing({
                 <p className="text-base font-semibold text-muted-foreground">
                   {plan.name}
                 </p>
-                <div className="mt-6 flex items-center justify-center gap-x-2">
-                  <span className="text-5xl font-bold tracking-tight text-foreground">
+                <div className="mt-4 sm:mt-6 flex items-center justify-center gap-x-2">
+                  <span className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground">
                     <NumberFlow
                       value={
                         isMonthly ? Number(plan.price) : Number(plan.yearlyPrice)
