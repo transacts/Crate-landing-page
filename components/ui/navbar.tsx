@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const AnimatedNavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
   const defaultTextColor = 'text-gray-300';
@@ -39,6 +40,7 @@ const AnimatedNavLink = ({ href, children }: { href: string; children: React.Rea
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const router = useRouter();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -106,8 +108,12 @@ export function Navbar() {
     </div>
   );
   const signInButtonElement = (
-    <button className="px-6 py-2.5 text-sm border border-[#333] bg-[rgba(31,31,31,0.62)] text-gray-300 rounded-full hover:border-white/50 hover:text-white transition-colors duration-200 w-full sm:w-auto font-medium">
-      Sign In
+    <button 
+      onClick={() => router.push('/sign-in')}
+      className="group relative px-6 py-2.5 text-sm border border-[#333] bg-[rgba(31,31,31,0.62)] text-gray-300 rounded-full hover:border-white/50 hover:text-white hover:bg-[rgba(255,255,255,0.05)] transition-all duration-200 w-full sm:w-auto font-medium cursor-pointer transform hover:scale-105 active:scale-95"
+    >
+      <span className="relative z-10">Sign In</span>
+      <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
     </button>
   );
 

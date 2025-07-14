@@ -49,7 +49,7 @@ const FaqSection = React.forwardRef<HTMLElement, FaqSectionProps>(
           </motion.div>
 
           {/* FAQ Items */}
-          <div className="max-w-3xl mx-auto space-y-2 px-4 sm:px-0">
+          <div className="max-w-3xl mx-auto space-y-3 sm:space-y-2 px-4 sm:px-0">
             {items.map((item, index) => (
               <FaqItem
                 key={index}
@@ -127,11 +127,11 @@ const FaqItem = React.forwardRef<
       <Button
         variant="ghost"
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full px-4 sm:px-6 py-3 sm:py-4 h-auto justify-between hover:bg-transparent text-left cursor-pointer"
+        className="w-full px-4 sm:px-6 py-4 sm:py-5 h-auto justify-between hover:bg-transparent text-left cursor-pointer min-h-[56px] sm:min-h-[60px]"
       >
         <h3
           className={cn(
-            "text-sm sm:text-base font-medium transition-colors duration-300 text-left pr-2",
+            "text-base sm:text-lg font-medium transition-colors duration-300 text-left pr-3 sm:pr-4 leading-relaxed",
             "text-foreground/70",
             isOpen && "text-foreground",
             isHovered && !isOpen && "text-foreground/90"
@@ -152,7 +152,7 @@ const FaqItem = React.forwardRef<
             isHovered && "text-foreground/80"
           )}
         >
-          <ChevronDown className="h-4 w-4" />
+          <ChevronDown className="h-5 w-5 sm:h-4 sm:w-4" />
         </motion.div>
       </Button>
       <AnimatePresence initial={false}>
@@ -170,12 +170,12 @@ const FaqItem = React.forwardRef<
               transition: { duration: 0.2, ease: "easeIn" },
             }}
           >
-            <div className="px-4 sm:px-6 pb-3 sm:pb-4 pt-2">
+            <div className="px-4 sm:px-6 pb-4 sm:pb-4 pt-2">
               <motion.p
                 initial={{ y: -10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: -10, opacity: 0 }}
-                className="text-sm text-muted-foreground leading-relaxed"
+                className="text-sm sm:text-base text-muted-foreground leading-relaxed"
               >
                 {answer}
               </motion.p>

@@ -1,10 +1,15 @@
+"use client";
+
 import React from 'react'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 export function HeroSection() {
+    const router = useRouter();
+    
     return (
         <main className="overflow-visible">
                 <section>
@@ -21,17 +26,20 @@ export function HeroSection() {
                             </p>
                             {/* Buttons */}
                             <div className="flex flex-row gap-6 justify-center items-center mt-4">
-                                <a href="#get-started">
-                                  <InteractiveHoverButton
-                                    text="Start Now"
-                                    defaultActive={true}
-                                  />
-                                </a>
-                                <a href="#demo">
-                                  <InteractiveHoverButton
-                                    text="Book a Demo"
-                                  />
-                                </a>
+                                <InteractiveHoverButton
+                                  text="Start Now"
+                                  defaultActive={true}
+                                  onClick={() => router.push('/sign-in')}
+                                />
+                                <InteractiveHoverButton
+                                  text="Book a Demo"
+                                  onClick={() => {
+                                    const demoSection = document.getElementById('demo');
+                                    if (demoSection) {
+                                      demoSection.scrollIntoView({ behavior: 'smooth' });
+                                    }
+                                  }}
+                                />
                             </div>
                             {/* Removed Integrations Row and 'Works with' section */}
                             {/* Add extra space at the bottom on mobile */}

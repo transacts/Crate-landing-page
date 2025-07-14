@@ -3,7 +3,7 @@
 import React, { useRef } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
+// import { cn } from "@/lib/utils";
 
 const integrations = [
   {
@@ -56,21 +56,21 @@ const itemVariants = {
   }
 };
 
-const lineVariants = {
-  hidden: { 
-    pathLength: 0,
-    opacity: 0
-  },
-  visible: { 
-    pathLength: 1,
-    opacity: 0.3,
-    transition: {
-      duration: 1.5,
-      ease: [0.4, 0, 0.2, 1] as const,
-      delay: 0.8
-    }
-  }
-};
+// const lineVariants = {
+//   hidden: { 
+//     pathLength: 0,
+//     opacity: 0
+//   },
+//   visible: { 
+//     pathLength: 1,
+//     opacity: 0.3,
+//     transition: {
+//       duration: 1.5,
+//       ease: [0.4, 0, 0.2, 1] as const,
+//       delay: 0.8
+//     }
+//   }
+// };
 
 export function IntegrationShowcase() {
   const containerRef = useRef<HTMLDivElement>(null);
