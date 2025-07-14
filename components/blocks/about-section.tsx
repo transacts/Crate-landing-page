@@ -7,7 +7,7 @@ import * as THREE from 'three';
 
 // 3D Model Component
 function CrateModel() {
-  const { scene } = useGLTF('/crate.glb');
+  const { scene } = useGLTF('https://z1yerx063o.ufs.sh/f/GN4ttTOsk7DcuHbZVRFGjiJgs1ItlaE75LZCRymzpYeGX8WM');
   const modelRef = useRef<THREE.Group>(null);
   
   // Auto-rotate the model
