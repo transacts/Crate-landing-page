@@ -109,7 +109,7 @@ export function Navbar() {
   );
   const signInButtonElement = (
     <button 
-      onClick={() => router.push('/sign-in')}
+      onClick={() => router.push('https://app.cratedashboard.com/login')}
       className="group relative px-5 py-2 text-sm border border-[#333] bg-[rgba(31,31,31,0.62)] text-gray-300 rounded-lg hover:border-white/50 hover:text-white hover:bg-[rgba(255,255,255,0.05)] transition-all duration-200 w-full sm:w-auto font-medium cursor-pointer transform hover:scale-105 active:scale-95 whitespace-nowrap"
     >
       <span className="relative z-10">Sign In</span>
