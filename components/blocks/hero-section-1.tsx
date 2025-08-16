@@ -29,7 +29,7 @@ export function HeroSection() {
                                 <InteractiveHoverButton
                                   text="Start Now"
                                   defaultActive={true}
-                                  onClick={() => router.push('/sign-in')}
+                                  onClick={() => window.location.href = 'https://app.cratedashboard.com/login'}
                                 />
                                 <InteractiveHoverButton
                                   text="Book a Demo"
