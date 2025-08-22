@@ -18,7 +18,7 @@ export function HeroSection() {
                         <div className="relative z-10 flex flex-col items-center gap-6 sm:gap-8 md:gap-10 px-4 sm:px-6 md:px-8 pt-16 sm:pt-20 md:pt-24 lg:pt-32 pb-12 sm:pb-16 md:pb-20 lg:pb-24 text-center max-w-4xl mx-auto">
                             {/* Headline */}
                             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] text-white px-2">
-                                <span className="block">The Future of E-commerce is Here.</span>
+                                <span className="block">The Future of Ecommerce is Here.</span>
                             </h1>
                             {/* Subheadline */}
                             <p className="text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed max-w-3xl text-gray-300 px-2">
@@ -57,12 +57,12 @@ export function HeroSection() {
                         viewport={{ once: true, amount: 0.3 }}
                         transition={{ duration: 0.6 }}
                     >
-                        <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold mb-3 text-white">
-                            Seamlessly Connects With
-                        </h2>
-                        <p className="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto">
+                        <p className="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto mb-3">
                             One platform to rule them all. Connect your favorite tools and automate everything.
                         </p>
+                        <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-white">
+                            Seamlessly Connects With
+                        </h2>
                     </motion.div>
 
                     {/* Integration Grid */}

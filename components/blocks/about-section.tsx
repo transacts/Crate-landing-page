@@ -1,34 +1,8 @@
 'use client';
 
-import React, { Suspense, useRef } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { useGLTF, OrbitControls, Bounds } from '@react-three/drei';
-import * as THREE from 'three';
-
-// 3D Model Component
-function CrateModel() {
-  const { scene } = useGLTF('https://z1yerx063o.ufs.sh/f/GN4ttTOsk7DcuHbZVRFGjiJgs1ItlaE75LZCRymzpYeGX8WM');
-  const modelRef = useRef<THREE.Group>(null);
-  
-  // Auto-rotate the model
-  useFrame((state, delta) => {
-    if (modelRef.current) {
-      modelRef.current.rotation.y += delta * 0.3;
-    }
-  });
-  
-  return <primitive ref={modelRef} object={scene} scale={1} />;
-}
-
-// Loading component
-function Loader() {
-  return (
-    <mesh>
-      <boxGeometry args={[0.1, 0.1, 0.1]} />
-      <meshBasicMaterial color="white" opacity={0.6} transparent />
-    </mesh>
-  );
-}
+import React from 'react';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export default function About() {
 
@@ -56,44 +30,168 @@ export default function About() {
             <p className="text-lg sm:text-xl lg:text-2xl font-medium leading-relaxed lg:leading-loose tracking-wide max-w-2xl mx-auto lg:mx-0 lg:ml-auto">
               We&apos;re <span className="font-bold">CRATE</span> — an AI-powered operational agent for e-commerce brands who actually want to scale efficiently. 
               We connect your Shopify, Amazon, Meta Ads, and QuickBooks accounts through one unified dashboard that automates campaigns, 
-              generates financial reports, and deploys smart tasks. Founded in 2024, we eliminate repetitive busywork so commerce teams 
+              generates financial reports, and deploys smart tasks. Eliminate repetitive busywork so commerce teams 
               can focus on growth instead of manual processes. No complexity, no hassle — just intelligent automation that works.
             </p>
           </div>
 
-          {/* 3D Model Viewer */}
-          <div className="w-full lg:col-span-3 h-80 sm:h-96 lg:h-[600px] order-1 lg:order-2">
-            <Canvas
-              camera={{
-                position: [5, 5, 5],
-                fov: 50,
-                near: 0.1,
-                far: 1000
-              }}
-              style={{
-                width: '100%',
-                height: '100%',
-                minHeight: '400px',
-              }}
-            >
-              <ambientLight intensity={0.5} />
-              <directionalLight position={[10, 10, 5]} intensity={1} />
-              <Suspense fallback={<Loader />}>
-                <Bounds fit clip observe margin={1.5}>
-                  <CrateModel />
-                </Bounds>
-              </Suspense>
-              <OrbitControls
-                makeDefault
-                enablePan={true}
-                enableZoom={true}
-                enableRotate={true}
-                minDistance={1}
-                maxDistance={50}
-                autoRotate={true}
-                autoRotateSpeed={1}
-              />
-            </Canvas>
+          {/* Animated Integration Visual */}
+          <div className="w-full lg:col-span-3 h-80 sm:h-96 lg:h-[600px] order-1 lg:order-2 relative flex items-center justify-center">
+            <div className="relative w-full max-w-[500px] h-full flex items-center justify-center">
+              {/* Central CRATE Hub */}
+              <motion.div
+                className="absolute z-20 w-32 h-32 bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl flex items-center justify-center shadow-2xl"
+                initial={{ scale: 0, rotate: -180 }}
+                animate={{ scale: 1, rotate: 0 }}
+                transition={{ duration: 0.8, delay: 0.2, type: "spring" }}
+                whileHover={{ scale: 1.1 }}
+              >
+                <span className="text-white font-bold text-2xl">CRATE</span>
+              </motion.div>
+
+              {/* Orbiting Integrations */}
+              {[
+                { name: "Shopify", logo: "/shopify-logo.png", angle: 0, color: "from-green-500 to-green-600" },
+                { name: "Amazon", logo: "/amazon-icon.svg", angle: 90, color: "from-orange-500 to-orange-600" },
+                { name: "Meta", logo: "/meta.svg", angle: 180, color: "from-blue-500 to-blue-600" },
+                { name: "QuickBooks", logo: "/QuickBooks.svg", angle: 270, color: "from-purple-500 to-purple-600" }
+              ].map((integration, index) => {
+                const radius = 180;
+                const angleRad = (integration.angle * Math.PI) / 180;
+                const x = Math.cos(angleRad) * radius;
+                const y = Math.sin(angleRad) * radius;
+
+                return (
+                  <React.Fragment key={integration.name}>
+                    {/* Connection Line */}
+                    <motion.svg
+                      className="absolute inset-0 w-full h-full pointer-events-none z-10"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.8 + index * 0.1 }}
+                    >
+                      <motion.line
+                        x1="50%"
+                        y1="50%"
+                        x2={`${50 + (x / 4)}%`}
+                        y2={`${50 + (y / 4)}%`}
+                        stroke={`url(#gradient-${integration.name})`}
+                        strokeWidth="2"
+                        strokeDasharray="5 5"
+                        initial={{ pathLength: 0 }}
+                        animate={{ pathLength: 1 }}
+                        transition={{ duration: 1, delay: 0.8 + index * 0.1 }}
+                      >
+                        <animate
+                          attributeName="stroke-dashoffset"
+                          values="10;0"
+                          dur="1s"
+                          repeatCount="indefinite"
+                        />
+                      </motion.line>
+                      <defs>
+                        <linearGradient id={`gradient-${integration.name}`}>
+                          <stop offset="0%" stopColor="rgba(59, 130, 246, 0.1)" />
+                          <stop offset="50%" stopColor="rgba(59, 130, 246, 0.5)" />
+                          <stop offset="100%" stopColor="rgba(59, 130, 246, 0.1)" />
+                        </linearGradient>
+                      </defs>
+                    </motion.svg>
+
+                    {/* Integration Node */}
+                    <motion.div
+                      className={`absolute z-10 w-20 h-20 bg-gradient-to-br ${integration.color} rounded-xl flex items-center justify-center shadow-lg`}
+                      style={{
+                        left: `calc(50% + ${x}px - 40px)`,
+                        top: `calc(50% + ${y}px - 40px)`
+                      }}
+                      initial={{ scale: 0, opacity: 0 }}
+                      animate={{ 
+                        scale: [1, 1.1, 1],
+                        opacity: 1
+                      }}
+                      transition={{ 
+                        scale: {
+                          duration: 2,
+                          repeat: Infinity,
+                          repeatType: "reverse",
+                          delay: index * 0.5
+                        },
+                        opacity: {
+                          duration: 0.5,
+                          delay: 0.5 + index * 0.1
+                        }
+                      }}
+                      whileHover={{ scale: 1.2 }}
+                    >
+                      <Image
+                        src={integration.logo}
+                        alt={integration.name}
+                        width={40}
+                        height={40}
+                        className="object-contain filter brightness-0 invert"
+                      />
+                    </motion.div>
+
+                    {/* Data Flow Particles */}
+                    <motion.div
+                      className="absolute w-2 h-2 bg-blue-400 rounded-full z-5"
+                      style={{
+                        left: "50%",
+                        top: "50%"
+                      }}
+                      animate={{
+                        x: [0, x],
+                        y: [0, y],
+                        scale: [0, 1, 0],
+                        opacity: [0, 1, 0]
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        delay: index * 0.5,
+                        ease: "linear"
+                      }}
+                    />
+                    <motion.div
+                      className="absolute w-2 h-2 bg-blue-400 rounded-full z-5"
+                      style={{
+                        left: `calc(50% + ${x}px)`,
+                        top: `calc(50% + ${y}px)`
+                      }}
+                      animate={{
+                        x: [-x, 0],
+                        y: [-y, 0],
+                        scale: [0, 1, 0],
+                        opacity: [0, 1, 0]
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        delay: 1 + index * 0.5,
+                        ease: "linear"
+                      }}
+                    />
+                  </React.Fragment>
+                );
+              })}
+
+              {/* Glow Effect */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <motion.div
+                  className="w-64 h-64 bg-blue-500 rounded-full blur-3xl opacity-20"
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [0.2, 0.3, 0.2]
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
