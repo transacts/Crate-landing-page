@@ -30,7 +30,7 @@ export default function SignIn() {
   return (
     <SignInPage
       title={<span className="font-light text-foreground tracking-tighter">Welcome to <span className="font-bold">CRATE</span></span>}
-      description="Sign in to access your AI-powered e-commerce dashboard"
+      description="Sign in to access your AI-powered ecommerce dashboard"
       heroImageSrc="/crate-logo.png"
       onSignIn={handleSignIn}
       onGoogleSignIn={handleGoogleSignIn}

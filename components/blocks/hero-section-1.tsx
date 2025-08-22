@@ -141,7 +141,7 @@ export function HeroSection() {
                             {/* Integration Cards */}
                             <div className="grid grid-cols-4 gap-8 items-center h-[300px]">
                                 {[
-                                { name: "Shopify", logo: "/shopify-logo.png", description: "E-commerce platform", position: "self-start mt-8" },
+                                { name: "Shopify", logo: "/shopify-logo.png", description: "Ecommerce platform", position: "self-start mt-8" },
                                 { name: "Amazon", logo: "/amazon-icon.svg", description: "Marketplace", position: "self-start mt-8" },
                                 { name: "Meta Ads", logo: "/meta.svg", description: "Advertising platform", position: "self-start mt-8" },
                                 { name: "QuickBooks", logo: "/QuickBooks.svg", description: "Financial management", position: "self-start mt-8" }
