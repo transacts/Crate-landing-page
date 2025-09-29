@@ -229,7 +229,7 @@ export function FeatureSection() {
           Features
         </h2>
         <p className="text-gray-400 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed">
-          Everything you need to automate your e-commerce operations in one unified platform
+          Everything you need to automate your ecommerce operations in one unified platform
         </p>
       </div>
       <div className="container mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 py-6 sm:py-8 lg:py-12 xl:py-16">

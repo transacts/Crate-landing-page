@@ -17,10 +17,10 @@ interface FeatureModalProps {
 const featureDetails = {
   "Integrations": {
     title: "Seamless Integrations",
-    subtitle: "Connect all your e-commerce tools in one unified platform",
+    subtitle: "Connect all your ecommerce tools in one unified platform",
     description: "CRATE seamlessly connects with Shopify, Amazon, Meta Ads, and QuickBooks to create a unified workflow that eliminates data silos and manual data entry.",
     benefits: [
-      "One-click setup for major e-commerce platforms",
+      "One-click setup for major ecommerce platforms",
       "Real-time data synchronization across all tools",
       "Automated data mapping and conflict resolution",
       "Secure API connections with enterprise-grade encryption",
@@ -30,7 +30,7 @@ const featureDetails = {
       {
         icon: Globe,
         title: "Universal Connectivity",
-        description: "Connect with 50+ popular e-commerce and business tools"
+        description: "Connect with 50+ popular ecommerce and business tools"
       },
       {
         icon: Shield,

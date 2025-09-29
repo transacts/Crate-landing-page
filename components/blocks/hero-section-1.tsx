@@ -177,7 +177,7 @@ export function HeroSection() {
                         {/* Mobile Layout */}
                         <div className="lg:hidden grid grid-cols-2 sm:grid-cols-4 gap-6">
                             {[
-                                { name: "Shopify", logo: "/shopify-logo.png", description: "E-commerce platform" },
+                                { name: "Shopify", logo: "/shopify-logo.png", description: "ecommerce platform" },
                                 { name: "Amazon", logo: "/amazon-icon.svg", description: "Marketplace" },
                                 { name: "Meta Ads", logo: "/meta.svg", description: "Advertising platform" },
                                 { name: "QuickBooks", logo: "/QuickBooks.svg", description: "Financial management" }

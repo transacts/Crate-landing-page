@@ -9,7 +9,7 @@ const integrations = [
   {
     name: "Shopify",
     logo: "/shopify-logo.png",
-    description: "E-commerce platform"
+    description: "Ecommerce platform"
   },
   {
     name: "Amazon",
