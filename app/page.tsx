@@ -63,7 +63,7 @@ export default function Home() {
                 ],
                 description: "Perfect for new brands and small shops.",
                 buttonText: "Get Started",
-                href: "#",
+                href: "https://app.cratedashboard.com/login",
                 isPopular: false,
               },
               {
@@ -79,7 +79,7 @@ export default function Home() {
                 ],
                 description: "Best for scaling e-commerce businesses.",
                 buttonText: "Start Free Trial",
-                href: "#",
+                href: "https://app.cratedashboard.com/login",
                 isPopular: true,
               },
               {
@@ -95,7 +95,7 @@ export default function Home() {
                 ],
                 description: "For high-volume brands and agencies.",
                 buttonText: "Contact Sales",
-                href: "#",
+                href: "https://app.cratedashboard.com/login",
                 isPopular: false,
               },
             ]}
