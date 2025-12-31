@@ -96,20 +96,25 @@ export function Pricing({
       </div>
 
       <div className="w-full flex justify-center">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 w-full max-w-5xl mx-auto px-4 sm:px-6 md:px-8">
+        <div className={cn(
+          "gap-4 sm:gap-6 w-full mx-auto px-4 sm:px-6 md:px-8",
+          plans.length === 1
+            ? "flex justify-center max-w-md"
+            : "grid grid-cols-1 md:grid-cols-3 max-w-5xl"
+        )}>
           {plans.map((plan, index) => (
             <motion.div
               key={index}
               initial={{ y: 50, opacity: 1 }}
               whileInView={
-                isDesktop
+                isDesktop && plans.length > 1
                   ? {
                       y: plan.isPopular ? -20 : 0,
                       opacity: 1,
                       x: index === 2 ? -30 : index === 0 ? 30 : 0,
                       scale: index === 0 || index === 2 ? 0.94 : 1.0,
                     }
-                  : {}
+                  : { y: 0, opacity: 1 }
               }
               viewport={{ once: true }}
               transition={{
@@ -124,12 +129,12 @@ export function Pricing({
                 `rounded-2xl border-[1px] p-4 sm:p-6 bg-background text-center lg:flex lg:flex-col lg:justify-center relative`,
                 plan.isPopular ? "border-primary border-2" : "border-border",
                 "flex flex-col",
-                !plan.isPopular && "mt-5",
-                index === 0 || index === 2
+                !plan.isPopular && plans.length > 1 && "mt-5",
+                plans.length > 1 && (index === 0 || index === 2)
                   ? "z-0 transform translate-x-0 translate-y-0 -translate-z-[50px] rotate-y-[10deg]"
                   : "z-1",
-                index === 0 && "origin-right",
-                index === 2 && "origin-left"
+                plans.length > 1 && index === 0 && "origin-right",
+                plans.length > 1 && index === 2 && "origin-left"
               )}
             >
               {plan.isPopular && (
@@ -153,8 +158,8 @@ export function Pricing({
                       format={{
                         style: "currency",
                         currency: "USD",
-                        minimumFractionDigits: 0,
-                        maximumFractionDigits: 0,
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
                       }}
                       transformTiming={{
                         duration: 500,

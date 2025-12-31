@@ -51,56 +51,26 @@ export default function Home() {
           <Pricing
             plans={[
               {
-                name: "Starter",
-                price: "29",
-                yearlyPrice: "24",
+                name: "Platinum",
+                price: "99.99",
+                yearlyPrice: "79.99",
                 period: "month",
                 features: [
-                  "Unlimited campaigns",
-                  "Shopify & Amazon integration",
+                  "QuickBooks integration",
+                  "Shopify integration",
+                  "Meta integration",
+                  "Amazon Seller integration",
                   "Basic reporting",
-                  "Email support",
-                ],
-                description: "Perfect for new brands and small shops.",
-                buttonText: "Get Started",
-                href: "https://app.cratedashboard.com/login",
-                isPopular: false,
-              },
-              {
-                name: "Growth",
-                price: "79",
-                yearlyPrice: "64",
-                period: "month",
-                features: [
-                  "Everything in Starter",
-                  "Meta Ads & QuickBooks integration",
-                  "Advanced reporting",
                   "Priority support",
                 ],
-                description: "Best for scaling e-commerce businesses.",
-                buttonText: "Start Free Trial",
+                description: "Everything you need to manage your e-commerce business.",
+                buttonText: "Get Started",
                 href: "https://app.cratedashboard.com/login",
                 isPopular: true,
               },
-              {
-                name: "Enterprise",
-                price: "199",
-                yearlyPrice: "159",
-                period: "month",
-                features: [
-                  "All integrations",
-                  "Custom automations",
-                  "Dedicated account manager",
-                  "24/7 support",
-                ],
-                description: "For high-volume brands and agencies.",
-                buttonText: "Contact Sales",
-                href: "https://app.cratedashboard.com/login",
-                isPopular: false,
-              },
             ]}
-            title="Pricing for Every Stage"
-            description="Simple, transparent pricing. No hidden fees."
+            title="Simple, Transparent Pricing"
+            description="One plan with everything you need."
           />
         </div>
       </motion.section>
